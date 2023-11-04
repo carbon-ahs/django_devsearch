@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+{% block content %}
+<h1>Delete Project </h1>
+<p>  </p>
+<form action='' method='POST'>
+    {% csrf_token %}
+    <p>Are you sure to delete"{{project}}"?  </p>
+
+    <a href= '{% url "projects" %}' >
+        <button>Go Back</button>
+    </a>
+    <input type="submit" value="Confirm">
+</form>
+
+{% endblock %}

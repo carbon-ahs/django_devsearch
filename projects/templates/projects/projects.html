@@ -1,0 +1,32 @@
+{% extends "main.html" %}
+{% block content %}
+<h1>from projects</h1>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab nesciunt impedit repellendus itaque laborum similique! Vitae quis dolorem repellendus minus distinctio modi placeat commodi ea officiis, soluta ullam blanditiis corrupti?</p>
+<ul>
+{% for project in projects %}
+<li><a href="{% url 'project' project.id %}">{{project.title}} </a>--- {{project.description}}</li>
+{% endfor %}
+</ul>
+
+
+<table>
+    <th>Title</th>
+    <th>Positive Votes</th>
+
+    <th>Votes</th>
+    <th>Created</th>
+    <th></th>
+    {% for project in projects %}
+    <tr>
+        <td>{{project.title}}</td>
+        <td>{{project.vote_ratio}}%</td>
+        <td>{{project.vote_total}}</td>
+        <td>{{project.created}}</td>
+        <td><a href="{% url 'project' project.id %}">View</a></td>
+        <td><a href="{% url 'update-project' project.id %}">Update</a></td>
+        <td><a href="{% url 'delete-project' project.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
